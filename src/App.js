@@ -1,25 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import JuegoCard from './JuegoCard'
 
 function App() {
+  const [banderas, setBanderas] = useState([]);
+  const [paisCorrecto, setPaisCorrecto] = useState(0);
+
+  const fetchData = async () => {
+    const resp = await axios.get("https://countriesnow.space/api/v0.1/countries/flag/images");
+    setBanderas(resp.data.data)
+    setPaisCorrecto(Math.random() * resp.data.data.length);
+  }
+
+  useEffect(() => {
+    fetchData();    
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <JuegoCard paisCorrecto={paisCorrecto} arrayPaises={banderas}></JuegoCard>
   );
 }
 
 export default App;
+// 
