@@ -7,19 +7,26 @@ import JuegoCard from './JuegoCard'
 function App() {
   const [banderas, setBanderas] = useState([]);
   const [paisCorrecto, setPaisCorrecto] = useState(0);
+  const [puntosCounter, setPuntosCounter] = useState(0);
 
   const fetchData = async () => {
     const resp = await axios.get("https://countriesnow.space/api/v0.1/countries/flag/images");
     setBanderas(resp.data.data)
-    setPaisCorrecto(Math.random() * resp.data.data.length);
+    setPaisCorrecto(Math.floor(Math.random() * resp.data.data.length));
   }
 
   useEffect(() => {
-    fetchData();    
+    fetchData();
   }, []);
 
+  useEffect(() => {
+    console.log("PETEPETEPTEPTEPTE", puntosCounter);
+    banderas.splice(paisCorrecto, 1);
+    setPaisCorrecto(Math.floor(Math.random() * banderas.length))
+  }, [puntosCounter])
+
   return (
-    <JuegoCard paisCorrecto={paisCorrecto} arrayPaises={banderas}></JuegoCard>
+    <JuegoCard paises={banderas} paisCorrecto={paisCorrecto} puntos={puntosCounter} setPuntos={setPuntosCounter}></JuegoCard>
   );
 }
 
