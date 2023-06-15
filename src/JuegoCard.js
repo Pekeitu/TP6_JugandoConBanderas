@@ -1,19 +1,20 @@
 import { Form, Button, Card } from 'react-bootstrap';
 
 
-function JuegoCard({ paises, paisCorrecto, puntos, setPuntos }){
+function JuegoCard({ paises, paisCorrecto, puntos, setPuntos, seconds }){
     if(typeof paisCorrecto === "undefined" || paises.length === 0) return (<div></div>);
 
     const handleEnvio = (e) => {
       e.preventDefault();
-      //e.stopPropagation();
-      console.log("Me encante el nepe", e.target)
-      if(e.target.inputPais === paises[paisCorrecto].name) {
+      e.stopPropagation();
 
-        setPuntos(puntos + 10);
+      if(e.target.inputPais.value === paises[paisCorrecto].name) {
+        setPuntos(puntos + 10 + seconds); //Cada segundo restante es un punto extra
       } else {
         setPuntos(puntos - 1);
       }
+
+      e.target.inputPais.value = "";
 
       return false;
     }
@@ -30,8 +31,8 @@ function JuegoCard({ paises, paisCorrecto, puntos, setPuntos }){
         </div>
       </Card.Text>
 
-      <Form>
-        <Form.Group controlId='form.inputPais' onSubmit={handleEnvio}>
+      <Form onSubmit={handleEnvio}>
+        <Form.Group controlId='form.inputPais'>
           <Form.Label> Ingrese el pais correcto </Form.Label>
           <Form.Control type="text" name="inputPais" placeholder='Aqui aqui me cague'/>
           <Button className='btn btn-primary' type='submit'>Enviar</Button>
