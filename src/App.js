@@ -32,8 +32,8 @@ function App() {
   }, [puntos])
 
   return (
-    <div>
-      <h1>{seconds}</h1>
+    <div className='FlexCentered'>
+      <h1>{seconds} Segundos restantes</h1>
       <JuegoCard paises={banderas} paisCorrecto={paisCorrecto} puntos={puntos} setPuntos={setPuntos} seconds={seconds}></JuegoCard>
     </div>
   );

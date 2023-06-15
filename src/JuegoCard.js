@@ -1,5 +1,5 @@
 import { Form, Button, Card } from 'react-bootstrap';
-
+import './JuegoCard.css';
 
 function JuegoCard({ paises, paisCorrecto, puntos, setPuntos, seconds }){
     if(typeof paisCorrecto === "undefined" || paises.length === 0) return (<div></div>);
@@ -8,7 +8,7 @@ function JuegoCard({ paises, paisCorrecto, puntos, setPuntos, seconds }){
       e.preventDefault();
       e.stopPropagation();
 
-      if(e.target.inputPais.value === paises[paisCorrecto].name) {
+      if(e.target.inputPais.value.toLowerCase() === paises[paisCorrecto].name.toLowerCase()) {
         setPuntos(puntos + 10 + seconds); //Cada segundo restante es un punto extra
       } else {
         setPuntos(puntos - 1);
@@ -20,9 +20,9 @@ function JuegoCard({ paises, paisCorrecto, puntos, setPuntos, seconds }){
     }
 
     return (
-    <Card>
+    <Card className='FlexCentered'>
       <h1>{puntos}</h1>
-    <Card.Img variant="top" src={paises[paisCorrecto].flag}/>
+    <Card.Img variant="top" className="flag" src={paises[paisCorrecto].flag}/>
     <Card.Body>
       <Card.Text>
         <div className="d-grid gap-2">
