@@ -28,18 +28,19 @@ function JuegoCard({ paises, paisCorrecto, puntos, setPuntos, seconds }){
         <div className="d-grid gap-2">
             {paises[paisCorrecto].name}
 
-        </div>
-      </Card.Text>
+              </div>
+            </Card.Text>
 
-      <Form onSubmit={handleEnvio}>
-        <Form.Group controlId='form.inputPais'>
-          <Form.Label> Ingrese el pais correcto </Form.Label>
-          <Form.Control type="text" name="inputPais" placeholder='Aqui aqui me cague'/>
-          <Button className='btn btn-primary' type='submit'>Enviar</Button>
-        </Form.Group>
-      </Form>
-    </Card.Body>
-  </Card>
+            <Form onSubmit={handleEnvio}>
+              <Form.Group controlId='form.inputPais'>
+                <Form.Label> Ingrese el pais correcto </Form.Label>
+                <Form.Control type="text" name="inputPais" placeholder='Aqui aqui me cague'/>
+                <Button className='btn btn-primary' type='submit'>Enviar</Button>
+              </Form.Group>
+            </Form>
+          </Card.Body>
+        </Card>
+      </div>
     );
 }
 
