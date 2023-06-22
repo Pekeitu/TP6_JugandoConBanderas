@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+#OpaqueBack {
+  background-color: rgba(180,180,180,0.6);
+}

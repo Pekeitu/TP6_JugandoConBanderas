@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root {
+  background-image: url(https://e0.pxfuel.com/wallpapers/552/832/desktop-wallpaper-trippy-nature-psychedelic-mountain.jpg);
+  height: 100vh;
+  width:100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
