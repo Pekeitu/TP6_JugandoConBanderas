@@ -1,3 +1,6 @@
+import PropTypes from "prop-types";
+import ModelPais from "./ModelPais";
+
 function Pista({paises, paisCorrecto, letrasDePista}) {
     if(typeof paisCorrecto === "undefined" || paises.length === 0) return (<div></div>);
     
@@ -13,5 +16,11 @@ function Pista({paises, paisCorrecto, letrasDePista}) {
         <h1>{str}</h1>
     )
 }
+
+Pista.propTypes = {
+    paises: PropTypes.arrayOf(PropTypes.instanceOf(ModelPais)),
+    paisCorrecto: PropTypes.number,
+    letrasDePista: PropTypes.arrayOf(PropTypes.symbol)
+};
 
 export default Pista;

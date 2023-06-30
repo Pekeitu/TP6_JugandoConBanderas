@@ -1,5 +1,7 @@
 import { Form, Button, Card } from 'react-bootstrap';
 import './JuegoCard.css';
+import  { PropTypes } from "prop-types";
+import ModelPais from './ModelPais';
 
 function JuegoCard({ paises, paisCorrecto, puntos, setPuntos, seconds }){
     if(typeof paisCorrecto === "undefined" || paises.length === 0) return (<div></div>);
@@ -41,6 +43,15 @@ function JuegoCard({ paises, paisCorrecto, puntos, setPuntos, seconds }){
         </Card.Body>
       </Card>
     );
+}
+
+
+JuegoCard.propTypes = {
+  paises: PropTypes.arrayOf(PropTypes.instanceOf(ModelPais)),
+  paisCorrecto: PropTypes.number,
+  puntos: PropTypes.number,
+  setPuntos: PropTypes.func,
+  seconds: PropTypes.number
 }
 
 export default JuegoCard;
